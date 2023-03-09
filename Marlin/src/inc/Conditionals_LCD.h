@@ -1556,12 +1556,22 @@
   #endif
   #define GRAPHICAL_TFT_UPSCALE 2
 #elif ENABLED(TFT_RES_480x272)
-  #define TFT_WIDTH  480
-  #define TFT_HEIGHT 272
+  #if ENABLED(TFT_COLOR_UI_PORTRAIT)
+    #define TFT_WIDTH  272
+    #define TFT_HEIGHT 480
+  #else
+    #define TFT_WIDTH  480
+    #define TFT_HEIGHT 272
+  #endif
   #define GRAPHICAL_TFT_UPSCALE 2
 #elif ENABLED(TFT_RES_480x320)
-  #define TFT_WIDTH  480
-  #define TFT_HEIGHT 320
+  #if ENABLED(TFT_COLOR_UI_PORTRAIT)
+    #define TFT_WIDTH  320
+    #define TFT_HEIGHT 480
+  #else
+    #define TFT_WIDTH  480
+    #define TFT_HEIGHT 320
+  #endif
   #define GRAPHICAL_TFT_UPSCALE 3
 #elif ENABLED(TFT_RES_1024x600)
   #define TFT_WIDTH  1024
@@ -1582,13 +1592,13 @@
     #elif ENABLED(TFT_INTERFACE_FSMC)
       #define TFT_320x240
     #endif
-  #elif TFT_HEIGHT == 320
+  #elif (TFT_WIDTH == 480 && TFT_HEIGHT == 320) || (TFT_WIDTH == 320 && TFT_HEIGHT == 480)
     #if ENABLED(TFT_INTERFACE_SPI)
       #define TFT_480x320_SPI
     #elif ENABLED(TFT_INTERFACE_FSMC)
       #define TFT_480x320
     #endif
-  #elif TFT_HEIGHT == 272
+  #elif (TFT_WIDTH == 480 && TFT_HEIGHT == 272) || (TFT_WIDTH == 272 && TFT_HEIGHT == 480)
     #if ENABLED(TFT_INTERFACE_SPI)
       #define TFT_480x272_SPI
     #elif ENABLED(TFT_INTERFACE_FSMC)

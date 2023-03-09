@@ -25,7 +25,7 @@
 
 #include "ui_common.h"
 
-#define TFT_STATUS_TOP_Y       4
+#define TFT_STATUS_TOP_Y       TERN(TFT_COLOR_UI_PORTRAIT, 14, 4)
 #define TFT_TOP_LINE_Y         4
 
 #define MENU_TEXT_X_OFFSET    16
